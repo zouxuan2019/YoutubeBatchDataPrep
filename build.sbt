@@ -2,9 +2,9 @@ name := "YoutubeBatchDataPrep"
 
 version := "0.1"
 
-scalaVersion := "2.12.7"
+scalaVersion := "2.11.12"
 
-val sparkVersion = "2.4.5"
+val sparkVersion = "2.4.4"
 
 
 resolvers ++= Seq(

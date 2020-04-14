@@ -5,5 +5,4 @@ object Main extends App {
   AnalysisProcessor.getCategoriesWithViewCount()
   AnalysisProcessor.getTop100VideosWithHighestViewPerCountry()
   AnalysisProcessor.getVideosWithDislikeGreaterThanLike()
-  AnalysisProcessor.getVideosWithMultipleRecords()
 }

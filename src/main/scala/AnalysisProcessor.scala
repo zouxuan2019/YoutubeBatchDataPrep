@@ -79,24 +79,4 @@ object AnalysisProcessor {
       .csv(destPath)
     sparkSession.close()
   }
-
-  def getVideosWithMultipleRecords(): Unit = {
-    val sourcePath = Utils.getDestDir + Utils.getFinalOriginalFileName
-    val destPath = Utils.getDestDir + Utils.getMultipleRecords
-
-    val sparkSession = Utils.getSparkSession
-    val csvDf = sparkSession.read.option("header", "true").csv(sourcePath)
-    import org.apache.spark.sql.functions._
-    val dfTitles = csvDf.groupBy("title").agg(count(lit(1))).withColumnRenamed("count(1)", "cnt").where("cnt>=5")
-    val dfResult = csvDf.join(dfTitles, "title")
-    dfResult
-      .drop("title")
-      .write
-      .option("header", "true")
-      .option("sep", ",")
-      .mode("overwrite")
-      .csv(destPath)
-    sparkSession.close()
-  }
-
 }
